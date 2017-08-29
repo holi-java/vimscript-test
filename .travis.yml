@@ -1,0 +1,14 @@
+language: Vim Script
+os: linux
+dist: precise
+before_install:
+  - sudo add-apt-repository ppa:jonathonf/vim -y
+  - sudo apt-get update -q
+  - sudo apt-get install vim -y
+  - sudo apt-get install git -y
+
+before_script:
+  - mkdir ~/.vim && cd ~/.vim
+  - git clone https://github.com/h1mesuke/vim-unittest.git .
+   
+script: bash all-test.sh
