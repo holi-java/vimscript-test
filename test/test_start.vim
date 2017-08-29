@@ -102,3 +102,7 @@ function! s:tc.test_assert_is_functionref()
   call self.assert_is(v:t_func, type(function("execute")))
   call self.assert_is_not(v:t_func, type("execute"))
 endfunction
+
+function! s:tc.test_add_a_failing_test()
+  call self.assert(0) //failed
+endfunction
