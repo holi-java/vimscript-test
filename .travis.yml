@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install git -y
 
 before_script:
-  - mkdir ~/.vim && cd ~/.vim
+  - echo $PWD && mkdir ~/.vim && cd ~/.vim
   - git clone https://github.com/h1mesuke/vim-unittest.git .
    
-script: bash all-test.sh
+script: ./all-test.sh
