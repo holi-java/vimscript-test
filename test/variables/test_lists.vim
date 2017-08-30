@@ -69,6 +69,15 @@ fun s:tc.test_unpack_list()
   call self.assert_equal([3, 4], rest)
 endfun
 
+fun s:tc.test_unpack_list_with_no_enough_args()
+  let list = [1, 2]
+  let [first, second; rest] = list
+
+  call self.assert_equal(1, first)
+  call self.assert_equal(2, second)
+  call self.assert_equal([], rest)
+endfun
+
 fun s:tc.test_set_item_in_list()
   let list = [1, 2]
 
