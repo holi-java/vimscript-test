@@ -55,6 +55,8 @@ fun s:tc.test_same_instance()
   let bar = [1, 2, 3]
 
   call self.assert(foo is foo)
+  call self.assert(1 is 1)
+  call self.assert("foo" is "foo")
   call self.assert(foo isnot bar)
 endfun
 
@@ -107,4 +109,11 @@ fun s:tc.test_divide_by_0()
   call self.assert_match('\v^80+$', printf('%x', 0/0))
   call self.assert_match('\v^7f+$', printf('%x', 1/0))
   call self.assert_match('\v^80+1$', printf('%x', -1/0))
+endfun
+
+fun s:tc.test_line_concatination()
+  let foo = "b
+            \ar"
+
+  call self.assert_equal("bar", foo)
 endfun
