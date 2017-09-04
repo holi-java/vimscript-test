@@ -1,4 +1,4 @@
-fun Touch()
+fun! Touch()
   return v:true
 endfun
 

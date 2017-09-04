@@ -59,10 +59,10 @@ fun! s:tc.test_define_dict_function()
 endfun
 
 fun! s:tc.test_define_closure_function_to_access_variables_and_varguments_from_the_outer_scope()
-  fun s:square(a)
+  fun! s:square(a)
     let b = 2
 
-    fun s:cal() closure
+    fun! s:cal() closure
       return a:a * b
     endfun
 
@@ -74,14 +74,16 @@ endfun
 
 fun! s:tc.test_ranged_function()
   let result=[-1, -1]
-  fun Sum(result) range
+
+  fun! s:range(result) range
     let a:result[0]=a:firstline
     let a:result[1]=a:lastline
   endfun
 
-  :.,$call Sum(result)
 
-  call self.assert_equal([1, 1], result)
+  :1,$call s:range(result)
+
+  call self.assert_equal([1, line("$")], result)
 endfun
 
 fun! s:tc.test_varargs()
